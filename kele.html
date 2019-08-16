@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Codystar|Limelight|Monoton|Poppins|Raleway+Dots|Vast+Shadow" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/kele.css">
+    <title>Yun Ju Hong</title>
+  </head>
+  <body>
+
+    <header class="v-header container">
+        <nav>
+          <div class="logo">
+            <h1>Yun Ju Hong</h1>
+          </div>
+          <ul class="menu">
+            <li><a href="landingpage.html#sec0">Home</a></li>
+            <li><a href="landingpage.html#sec1">Portolio</a></li>
+            <li><a href="landingpage.html#sec2">About</a></li>
+            <li><a href="landingpage.html#sec3">Contact Us</a></li>
+          </ul>
+          <div class="burger">
+            <div class="line1">
+            </div>
+            <div class="line2">
+            </div>
+            <div class="line3">
+            </div>
+          </div>
+        </nav>
+
+        <div class="kele-header-content">
+          <div class="kele-summary">
+            <h1>KELE</h1>
+            <p>APP DEVELOPMENT</p>
+          </div>
+          <div class="kele-nav">
+            <ul class="list-nav">
+              <li><a href="kele.html#kele-overview">Overview</a></li>
+              <li><a href="kele.html#kele-solution">Solution</a></li>
+              <li><a href="kele.html#kele-results">Results</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+    </header>
+
+    <section id="kele-overview">
+      <h1>OVERVIEW</h1>
+      <p>
+        Kele is a Ruby Gem API client used to access web application API.
+        My goal for this project is to create a Ruby Gem API client that would easily access the student endpoints of Bloc's (Bloc.io) API.
+      </p>
+    </section>
+    <section id="kele-solution">
+      <h1>SOLUTION</h1>
+      <img src="/assets/images/kele-user.jpg">
+      <p>
+        We are creating our own Ruby gem with this project.
+        We want to build our gem by first modifying its specifications in our gemspec file.
+        I also installed httparty to allow Ruby to make HTTP requests.
+        Then, we add an initialize method that creates a new Kele client.
+        When we test out our code, we should be able to retrieve and store our authentication token when we pass in valid credentials.
+        We can test out our code by using irb.
+        Once our test passes, we can continue by retrieving our current user as a JSON output.
+      </p>
+      <div class="code-parent">
+        <code>
+          <pre>
+            def get_me
+              response = self.class.get("#{base_uri}/users/me", headers: { "authorization" => @auth_token })
+              JSON.parse(response.body)
+            end
+          </pre>
+        </code>
+    </div>
+      <p>
+        Again, we need to make sure that we can retrieve our own personal user data and be able to convert the data to a Ruby hash.
+        The results of the test should show a hash of your personal data.
+        We want our user to retrieve a list of their mentor's availability.
+        We want to access a list of a mentor's available time slots for our user.
+      </p>
+      <div class="code-parent">
+        <code>
+          <pre>
+            def get_mentor_availability(mentor_id)
+              response = self.class.get("#{base_uri}/mentors/#{mentor_id}/student_availability", headers: {"authorization" => @auth_token} )
+              JSON.parse(response.body)
+            end
+          </pre>
+        </code>
+      </div>
+      <p>
+        We need to test this method to ensure that we retrieve a list of our mentor's available time slots and to convert the time slots to a Ruby array.
+        Our user needs to retrieve roadmaps and checkpoints.
+        It's important to note here that we moved the code into a module to better organize our application.
+        We can access this Roadmap module in our Kele class by requiring the 'lib/roadmap.rb'.
+        We want to test to make sure that we can retrieve the roadmap and the checkpoints.
+        We also want to retrieve the checkpoints' bodies and assignments.
+        The Bloc platform organizes all messages in message threads.
+        Our user needs to retrieve a list of messages, respond to an existing message, and create a new message thread.
+        We would need to retrieve the message threads first and then return a specified page.
+      </p>
+      <div class="code-parent">
+        <code>
+          <pre>
+            def get_messages(page_number = nil)
+              if page_number == nil
+                response = self.class.get("#{base_uri}/message_threads", body: {}, headers: {"authorization" => @auth_token})
+              else
+                response = self.class.get("#{base_uri}/message_threads", body: {
+                  "page": page_number
+                }, headers: {"authorization" => @auth_token})
+              end
+              JSON.parse(response.body)
+            end
+          </pre>
+        </code>
+      </div>
+      <p>
+        We want to create a create_message function that will create a message in a message thread.
+      </p>
+      <div class="code-parent">
+        <code>
+          <pre>
+            def create_message(sender, recipient_id, subject, token, stripped_text)
+              response = self.class.post("#{base_uri}/messages", body: {
+                "sender": sender,
+                "recipient_id": recipient_id,
+                "subject": subject,
+                "token": string,
+                "stripped-text": stripped-text
+                }, headers: {"authorization" => @auth_token})
+            end
+          </pre>
+        </code>
+      </div>
+      <p>
+        We want to test Kele in IRB to make sure we retrieve all messages for the current user and to create a new message and thread.
+        Our user needs to retrieve a list of checkpoints remaining in my current section.
+      </p>
+      <div class="code-parent">
+        <code>
+          <pre>
+            def get_remaining_checkpoints(chain_id)
+              response = self.class.get("#{base_uri}/enrollment_chains/#{chain_id}/checkpoints_remaining_in_section", headers: {"authorization" => @auth_token})
+              JSON.parse(response.body)
+            end
+          </pre>
+        </code>
+      </div>
+      </section>
+      <section id="kele-results">
+        <h1>Check Out the <a href="">Demo</a></h1>
+
+      </section>
+
+  </body>
+</html>

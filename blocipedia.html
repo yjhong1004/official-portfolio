@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Codystar|Limelight|Monoton|Poppins|Raleway+Dots|Vast+Shadow" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/blocipedia.css">
+    <title>Yun Ju Hong</title>
+  </head>
+  <body>
+
+    <header class="v-header container">
+        <nav>
+          <div class="logo">
+            <h1>Yun Ju Hong</h1>
+          </div>
+          <ul class="menu">
+            <li><a href="landingpage.html#sec0">Home</a></li>
+            <li><a href="landingpage.html#sec1">Portolio</a></li>
+            <li><a href="landingpage.html#sec2">About</a></li>
+            <li><a href="landingpage.html#sec3">Contact Us</a></li>
+          </ul>
+          <div class="burger">
+            <div class="line1">
+            </div>
+            <div class="line2">
+            </div>
+            <div class="line3">
+            </div>
+          </div>
+        </nav>
+
+        <div class="blocipedia-nav">
+          <ul class="list-nav">
+            <li><a href="blocipedia.html#blocipedia-overview">Overview</a></li>
+            <li><a href="blocipedia.html#blocipedia-objective">Objective</a></li>
+            <li><a href="blocipedia.html#blocipedia-solution">Solution</a></li>
+            <li><a href="blocipedia.html#blocipedia-results">Results</a></li>
+          </ul>
+
+        </div>
+        <div class="blocipedia-header-content">
+          <div class="blocipedia-summary">
+            <h1>BLOCIPEDIA</h1>
+            <p>APP DEVELOPMENT</p>
+          </div>
+        </div>
+
+    </header>
+
+    <section id="blocipedia-overview">
+      <h1>OVERVIEW</h1>
+      <p>Blocipedia is a web application that allows users to share information.
+        <br>It is similar to Wikipedia, which is an online encyclopedia,
+        <br>created by volunteers around the world.
+        <br>My goal for this project was to learn how to create a
+        basic Ruby on Rails application and to utilize different Ruby gems.
+      </p>
+    </section>
+
+    <section id="blocipedia-objective">
+      <img src="/assets/images/userstorypedia.jpg" style="border: 1px solid black">
+      <p>Ruby on Rails is a Model-View-Controller framework.
+        <br>This allows us to build our application with user stories in mind.
+        <br>We want to accomplish the following user stories:
+      </p>
+    </section>
+
+    <section id="blocipedia-solution">
+      <h1>SOLUTION</h1>
+
+      <p>
+        We want our users to be able to sign up for an account using their email address.
+        In other words, we want to authenticate our users
+      </p>
+        <img src="assets/images/blocipedia/signup.png">
+        <img src="assets/images/blocipedia/login.png">
+
+      <p>
+        Although we can go through our CRUD actions to implement authentication,
+        the easiest way to accomplish this is to utilize our Devise gem.
+        This gem also takes care of our sign in/sign out functions for our users.
+        Now that we have our users authenticated, we want to authorize our users to
+        be able to create, read, update, and delete public wikis.
+      </p>
+        <img src="assets/images/blocipedia/editwikiform.png">
+        <img src="assets/images/blocipedia/deletewiki.png">
+      <p>
+        We want to create different roles for our users to authorize certain functions for certain roles.
+        We want to offer three roles: admin, standard, and premium.
+      </p>
+        <img src="assets/images/blocipedia/stripe.png">
+      <p>
+        We have another amazing gem to use to help with our authorization process, called Pundit.
+      </p>
+
+
+
+      <p>
+        After we implement authorization, we want to use seed data to test out our application. We have another great gem, called Faker, that creates fake data for us automatically.
+        Up to this point of the application, we have our foundation: we have our users and their ability to create wikis.
+        We want to take it even further. We have two other user roles that we can implement. Our premium role for users should provide users with special privileges. We want to upgrade our users to a paid plan to access the premium features.
+        Going from the standard free plan to a premium paid plan is a bit complicated. So we can create a user flow to help things along.
+        An example of a user flow for this app:
+      </p>
+
+
+      <img src="assets/images/userflow.jpg">
+
+      <p>
+        We use Stripe to charge users to change their role from standard to premium. If we have the ability to upgrade a user's role to premium, we should also be able to downgrade a user back to the standard role.
+
+
+
+        One privilege for premium users is the ability to create private wikis.
+        We implement a form in the wikis views, which will only be shown to admin and premium users, through the help of Pundit.
+
+
+        We want our premium users to be able to add and remove collaborators to their privated wikis. In order to accomplish this user story, we developed the create and destroy functions for wiki collaborators in the Collaborators Controller. The create function is connected to the new wiki view. In the new wiki view, the premium user would have an option to add collaborators using the create function. We also updated the wiki policy so that we can allow only certain users the ability to create and destroy collaborators.
+      </p>
+    </section>
+
+    <!-- <section id="blocipedia-results">
+      This is where I will put my heroku link.
+
+      Some major programming skills that I've learned throughout this project:
+      Authorization: Implementing user sign up and sign in actions.
+      Authentication: creating different user roles and determining which role can access certain functions.
+      Utilization of gems like Devise, Pundit, Faker, and Stripe.
+    </section> -->
+
+  </body>
+</html>

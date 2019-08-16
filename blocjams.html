@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+    initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Codystar|Limelight|Monoton|Poppins|Raleway+Dots|Vast+Shadow" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles/blocjams.css">
+    <title>Yun Ju Hong</title>
+  </head>
+  <body>
+
+    <header class="v-header container">
+        <nav>
+          <div class="logo">
+            <h1>Yun Ju Hong</h1>
+          </div>
+          <ul class="menu">
+            <li><a href="landingpage.html#sec0">Home</a></li>
+            <li><a href="landingpage.html#sec1">Portolio</a></li>
+            <li><a href="landingpage.html#sec2">About</a></li>
+            <li><a href="landingpage.html#sec3">Contact Us</a></li>
+          </ul>
+          <div class="burger">
+            <div class="line1">
+            </div>
+            <div class="line2">
+            </div>
+            <div class="line3">
+            </div>
+          </div>
+        </nav>
+
+        <div class="blocjams-header-content">
+          <div class="blocjams-summary">
+            <h1>BLOCJAMS</h1>
+            <p>APP DEVELOPMENT</p>
+          </div>
+          <div class="blocjams-nav">
+            <ul class="list-nav">
+              <li><a href="blocjams.html#blocjams-overview">Overview</a></li>
+              <li><a href="blocjams.html#blocjams-solution">Solution</a></li>
+              <li><a href="blocjams.html#blocjams-results">Results</a></li>
+            </ul>
+          </div>
+        </div>
+
+
+    </header>
+
+    <section id="blocjams-overview">
+      <img src="/assets/images/blocjams/ipadversion.jpg" style="border: 1px solid black">
+      <h1>OVERVIEW</h1>
+      <p>BlocJams is a Javascript web application that streams music.
+        We utilized front end technologies to develop a music player, similar to Spotify.
+        We'll start by creating a skeleton structure of the app, using HTML.
+        We'll add styling and responsiveness using CSS.
+        Lastly, we'll increase interactivity with Javascript.
+        Our users need to access a landing page, designed with our theme in mind.
+          Since this is a front end project, we want to not only keep functionality in mind, but also design.
+      </p>
+    </section>
+
+
+    <section id="blocjams-solution">
+      <h1>SOLUTION</h1>
+
+      <p>
+        In order to accomplish our goal of creating a music player application,
+        we coded our skeleton HTML structures for each page: landing, collection view, and album view.
+      </p>
+
+      <img src="/assets/images/blocjams/landingpage.jpg">
+
+      <p>
+        Since our landing page is the first page that our users will access, the focus is really on design.
+        We utilized a combination of CSS and Javascript to dynamically display our landing page features.
+        Javascript functions will activate the CSS transitions and update the styles from what we've placed in the CSS file to the new styles in the script.
+        Our application should know when to trigger the animations.
+        In addition to design, we want our application to be responsive.
+      </p>
+      <h1>
+        What is responsive design?
+      </h1>
+      <p>
+        Since each browser renders certain styles differently, we utilized normalize.css, to make browsers render all elements in line with modern standards.
+        We wanted to make sure that our website is accessible on all devices and shown properly on all screen sizes.
+        We set the viewport meta tag in our head tag, which indicates how the browser should render the content in the device's window.
+        We also added media queries, which helped to apply styles conditionally and by utilizing parameters.
+      </p>
+
+      <h1>
+        Collection Page
+      </h1>
+
+      <img src="/assets/images/blocjams/collection.png">
+      <p>
+        The collection view is to display a user's album collection.
+        We first start off by creating a skeleton HTML structure, add styling using CSS, and display placeholder album data, which will eventually be dynamically generated using Javascript.
+      </p>
+      <h1>
+        Album Page
+      </h1>
+      <img src="/assets/images/blocjams/musicplayer.png">
+      <p>
+
+        The album view displays an album's title, artist, record label, and song list.
+        Like the pages that came before it, we implement its structure using HTML, add styling using CSS, and integrate dynamics using Javascript.
+        The album page is where we created the music player using the Javascript Buzz Library. We are able to play/pause, play next or previous songs, toggle the song position, and adjust the volume.
+      <br>
+      <br>
+        With our music player, we have have some objectives to fulfill:
+      </p>
+      <ol class="musicplayer-objectives">
+        <li>When we click on a song, the song number should change to a pause button.</li>
+
+        <li>When the mouse leaves the table row of the currently playing song, the pause button should remain.</li>
+
+        <li>When we switch songs, the previously playing song's table cell should revert the content back to the song number.</li>
+
+        <li>When we hover over each of the songs that aren't playing, the play button should appear. But, we don't want to show the play button when we hover over the playing song.</li>
+      </ol>
+      <p>
+        Up to this point of our project, we have been using vanilla JavaScript. We can utilize a helper library, JQuery, to do all that we've done so far. It simplifies the development process.
+        <br>
+        <br>
+        We've refactored our collection and album views and the changes can be view here:
+        <br>
+        <br>
+        <a href="https://github.com/yjhong1004/bloc-jams/commit/31c21bb0f791901986ca4e503c2cf7360917c518">Refactored Code into JQuery</a>
+        <br>
+        <br>
+        As we continue to refactor our code, we notice that our code is becoming concise and clean. We further clean our code by removing deprecated code, like the findParentByClassName() and getSongItem().
+        <br>
+        <br>
+        The code can be view here:
+        <br>
+        <br>
+        <a href="https://github.com/yjhong1004/bloc-jams/commit/6f57786a558a5887d54394a9d09fbd597942a6ba">Cleaning up Code</a>
+      </p>
+      </section>
+
+      <section id="blocjams-results">
+        <h1>Check Out the <a href="https://dazzling-galileo-86d4e4.netlify.com">Demo</a></h1>
+
+      </section>
+
+  </body>
+</html>
